@@ -1,11 +1,15 @@
+#include <avr/io.h>
 
-#define DDRB (*(volatile unsigned char*)0x24)
-#define PORTB (*(volatile unsigned char*)0x25)
-#define DDRD (*(volatile unsigned char*)0x2A)
-#define PIND (*(volatile unsigned char*)0x29)
+// LED - PB5
+// Button - PD2
 
-#define PB5 5   // LED
-#define PD2 2   // Button
+void delay(volatile long cycles) 
+{
+    while (cycles > 0) 
+    {
+        cycles--;
+    }
+}
 
 int main() 
 {
@@ -24,11 +28,7 @@ int main()
             PORTB &= ~(1 << PB5);   // Turn off LED
         }
         
-        // Delay
-        for (volatile long i = 0; i < 1000; i++) 
-        {
-            asm("nop");
-        }
+        delay(10000);
     }
     return 0;
 }

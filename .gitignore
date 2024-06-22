@@ -2,3 +2,8 @@
 .pio
 .vscode
 test
+
+# xmake
+build
+.xmake
+bin
